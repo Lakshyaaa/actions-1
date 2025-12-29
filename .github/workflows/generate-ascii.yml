@@ -8,18 +8,24 @@ jobs:
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v6
-            
-            - name: install Cowsay Program # because of error: bash: cowsay: command not found (From first-example.yml workflow)
-              run: sudo apt-get install cowsay -y
-
-            - name: Execute Cowsay CMD
-              run: cowsay -f dragon "Run for cover, Im a DRAGON... GitHub Actions is awesome!" >> dragon.txt
-            
-            - name: Test File Exists
-              run: grep -i "dragon" dragon.txt
-
-            - name: Read File
-              run: cat dragon.txt
 
             - name: List Repository Files
               run: ls -ltra
+
+            - name: Executing Shell Script
+              run: ./ascii-script.sh
+            
+            # - name: install Cowsay Program # because of error: bash: cowsay: command not found (From first-example.yml workflow)
+            #   run: sudo apt-get install cowsay -y
+
+            # - name: Execute Cowsay CMD
+            #   run: cowsay -f dragon "Run for cover, Im a DRAGON... GitHub Actions is awesome!" >> dragon.txt
+            
+            # - name: Test File Exists
+            #   run: grep -i "dragon" dragon.txt
+
+            # - name: Read File
+            #   run: cat dragon.txt
+
+            # - name: List Repository Files
+            #   run: ls -ltra
