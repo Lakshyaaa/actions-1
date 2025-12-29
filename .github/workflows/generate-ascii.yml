@@ -9,10 +9,10 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v6
             
-            - name: install Cowsay CMD # because of error: bash: cowsay: command not found (From first-example.yml workflow)
+            - name: install Cowsay Program # because of error: bash: cowsay: command not found (From first-example.yml workflow)
               run: sudo apt-get install cowsay -y
 
-            - name: execute Cowsay CMD
+            - name: Execute Cowsay CMD
               run: cowsay -f dragon "GitHub Actions is awesome!" >> dragon.txt
             
             - name: Test File Exists
