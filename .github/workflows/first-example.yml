@@ -8,12 +8,22 @@ jobs:
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v6
-
-            - name: Welcome Message
-              run: echo "Hello, welcome to my first GitHub Actions workflow!"
             
-            - name: List Files
-              run: ls
+            - name: List and Read files
+              run: | 
+                echo "Hello, welcome to my first GitHub Actions workflow!"
+                ls -ltra
+                cat README.md
+
+            - name: Generate ASCII Artwork
+              run: cowsay -f dragon "GitHub Actions is awesome!" >> dragon.txt
+
+
+            # - name: Welcome Message
+            #   run: echo "Hello, welcome to my first GitHub Actions workflow!"
+            
+            # - name: List Files
+            #   run: ls
               
-            - name: Read file
-              run: cat README.md
+            # - name: Read file
+            #   run: cat README.md
