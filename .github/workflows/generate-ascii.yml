@@ -13,7 +13,7 @@ jobs:
               run: sudo apt-get install cowsay -y
 
             - name: Execute Cowsay CMD
-              run: cowsay -f dragon "GitHub Actions is awesome!" >> dragon.txt
+              run: cowsay -f dragon "Run for cover, Im a DRAGON... GitHub Actions is awesome!" >> dragon.txt
             
             - name: Test File Exists
               run: grep -i "dragon" dragon.txt
