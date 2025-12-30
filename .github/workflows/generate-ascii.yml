@@ -1,21 +1,38 @@
+# Multiple Job Version of the Workflow
 name: Generate ASCII Artwork
 
 on: push 
 
 jobs:
-    ascii_job:
+    build_job1:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v6
+            - name: Install Cowsay Program
+              run: sudo apt-get install cowsay -y
 
-            - name: List Repository Files
-              run: ls -ltra
+            - name: Execute Cowsay CMD
+              run: cowsay -f dragon "Run for cover, Im a DRAGON... GitHub Actions is awesome!" >> dragon.txt
 
-            - name: Executing Shell Script
-              run: |
-                    chmod +x ./ascii-script.sh
-                    ./ascii-script.sh
+            - name: Sleep for 30 seconds
+              run: sleep 30
+
+    test_job2:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Sleep for 10 seconds
+              run: sleep 10
+
+            - name: Test File Exists
+              run: grep -i "dragon" dragon.txt
+           
+    deploy_job3:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Read File
+              run: cat dragon.txt
+
+            - name: Deploy
+              run: echo "Deploying ASCII artwork..."
             
             # - name: install Cowsay Program # because of error: bash: cowsay: command not found (From first-example.yml workflow)
             #   run: sudo apt-get install cowsay -y
@@ -31,3 +48,23 @@ jobs:
 
             # - name: List Repository Files
             #   run: ls -ltra
+
+# Single Job Version of the Above Workflow:
+# name: Generate ASCII Artwork
+
+# on: push 
+
+# jobs:
+#     build_job1:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Checkout Repository
+#               uses: actions/checkout@v6
+
+#             - name: List Repository Files
+#               run: ls -ltra
+
+#             - name: Executing Shell Script
+#               run: |
+#                     chmod +x ./ascii-script.sh
+#                     ./ascii-script.sh
